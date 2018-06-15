@@ -79,7 +79,7 @@ tags: []
 
 Copyright (C) 2018 Tim Schumacher
 
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+License LGPLv3+: GNU LGPL version 3 or later <http://gnu.org/licenses/lgpl.html>.
 
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent per‐mitted by law.
