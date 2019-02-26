@@ -77,7 +77,7 @@ tags: []
 
 ## License
 
-Copyright (C) 2018 Tim Schumacher
+Copyright (C) 2019 Tim Schumacher
 
 License LGPLv3+: GNU LGPL version 3 or later <http://gnu.org/licenses/lgpl.html>.
 

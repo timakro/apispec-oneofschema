@@ -1,6 +1,6 @@
 # apispec-oneofschema - Plugin for apispec providing support for
 #                       Marshmallow-OneOfSchema schemas
-# Copyright (C) 2018  Tim Schumacher
+# Copyright (C) 2019  Tim Schumacher
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
