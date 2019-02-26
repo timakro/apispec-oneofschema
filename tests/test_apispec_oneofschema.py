@@ -68,7 +68,7 @@ def test_nested(spec):
     assert 'Flower' in schemas
 
 
-def test_rsolver_returns_none():
+def test_resolver_returns_none():
     def resolver(schema):
         return None
 
