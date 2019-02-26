@@ -33,10 +33,10 @@ spec = APISpec(
     version='1.0.0',
     openapi_version='3.0.0',
     plugins=[
-        apispec_oneofschema.MarshmallowPlugin(),
+        MarshmallowPlugin(),
     ]
 )
-spec.definition('Plant', schema=PlantSchema)
+spec.components.schema('Plant', schema=PlantSchema)
 print(spec.to_yaml())
 ```
 
@@ -45,6 +45,7 @@ Resulting OpenAPI spec:
 ```yaml
 components:
   parameters: {}
+  responses: {}
   schemas:
     Flower:
       properties:
@@ -63,6 +64,7 @@ components:
         leaves: {format: int32, type: integer}
       required: [leaves]
       type: object
+  securitySchemes: {}
 info: {title: Botany, version: 1.0.0}
 openapi: 3.0.0
 paths: {}
