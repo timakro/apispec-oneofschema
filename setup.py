@@ -8,6 +8,10 @@ setup(name='apispec-oneofschema',
       author='Tim Schumacher',
       author_email='tim@timakro.de',
       url='https://github.com/timakro/apispec-oneofschema',
-      install_requires=['apispec', 'marshmallow<3.0.0', 'marshmallow-oneofschema'],
-      py_modules=['apispec_oneofschema']
+      install_requires=[
+          'apispec>=1.0.0',
+          'marshmallow<3.0.0',
+          'marshmallow-oneofschema'
+          ],
+      py_modules=['apispec_oneofschema.plugin']
       )

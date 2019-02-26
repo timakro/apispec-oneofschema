@@ -11,6 +11,7 @@ name to definition mapping for the discriminator.
 from apispec import APISpec
 from marshmallow import Schema, fields
 from marshmallow_oneofschema import OneOfSchema
+from apispec_oneofschema import MarshmallowPlugin
 
 class TreeSchema(Schema):
     leaves = fields.Int(required=True)
@@ -32,12 +33,9 @@ spec = APISpec(
     version='1.0.0',
     openapi_version='3.0.0',
     plugins=[
-        'apispec.ext.marshmallow',
-        'apispec_oneofschema'
+        apispec_oneofschema.MarshmallowPlugin(),
     ]
 )
-spec.definition('Tree', schema=TreeSchema)
-spec.definition('Flower', schema=FlowerSchema)
 spec.definition('Plant', schema=PlantSchema)
 print(spec.to_yaml())
 ```
