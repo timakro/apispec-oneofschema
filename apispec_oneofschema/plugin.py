@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from apispec.ext import marshmallow
+from apispec.ext.marshmallow import common
 from marshmallow_oneofschema import OneOfSchema
 
 class OneofOpenAPIConverter(marshmallow.OpenAPIConverter):
@@ -25,11 +26,14 @@ class OneofOpenAPIConverter(marshmallow.OpenAPIConverter):
         mapping = {}
         oneof = []
         for name, type_schema in schema.type_schemas.items():
-            component_name = self.schema_name_resolver(type_schema) or name
-            self.spec.components.schema(component_name, schema=type_schema)
-            ref = '#/components/schemas/{}'.format(component_name)
-            mapping.update({name: ref})
-            oneof.append({'$ref': ref})
+            schema_instance = common.resolve_schema_instance(type_schema)
+            schema_key = common.make_schema_key(schema_instance)
+            if schema_key not in self.refs:
+                component_name = self.schema_name_resolver(type_schema) or name
+                self.spec.components.schema(component_name, schema=type_schema)
+            ref_dict = self.get_ref_dict(schema_instance)
+            mapping.update({name: ref_dict['$ref']})
+            oneof.append(ref_dict)
 
         return {
             'oneOf': oneof,

@@ -47,6 +47,16 @@ def test_top_level(spec):
     assert 'Flower' in schemas
 
 
+def test_type_schema_already_in_spec(spec):
+    spec.components.schema('Flower', schema=FlowerSchema)
+    spec.components.schema('Plant', schema=PlantSchema)
+
+    schemas = spec.to_dict()['components']['schemas']
+    assert 'Tree' in schemas
+    assert 'Flower' in schemas
+    assert 'Plant' in schemas
+
+
 def test_nested(spec):
     spec.components.schema('Forest', schema=ForestSchema)
 
