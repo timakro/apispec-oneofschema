@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='apispec-oneofschema',
-      version='2.0.2',
+      version='2.1.0',
       license='LGPLv3',
       description='Plugin for apispec providing support for '
                   'Marshmallow-OneOfSchema schemas',
