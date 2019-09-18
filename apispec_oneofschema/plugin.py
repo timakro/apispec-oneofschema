@@ -60,3 +60,4 @@ class MarshmallowPlugin(marshmallow.MarshmallowPlugin):
             schema_name_resolver=self.schema_name_resolver,
             spec=spec,
         )
+        self.converter = self.openapi # Fix for the openapi attribute being renamed in apispec 3.0.0
