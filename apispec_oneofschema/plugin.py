@@ -53,11 +53,4 @@ def is_oneof(schema):
 
 
 class MarshmallowPlugin(marshmallow.MarshmallowPlugin):
-    def init_spec(self, spec):
-        super(MarshmallowPlugin, self).init_spec(spec)
-        self.openapi = OneofOpenAPIConverter(
-            openapi_version=spec.openapi_version,
-            schema_name_resolver=self.schema_name_resolver,
-            spec=spec,
-        )
-        self.converter = self.openapi # Fix for the openapi attribute being renamed in apispec 3.0.0
+    Converter = OneofOpenAPIConverter
