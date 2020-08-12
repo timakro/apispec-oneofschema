@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='apispec-oneofschema',
-      version='2.1.1',
+      version='3.0.0',
       license='LGPLv3',
       description='Plugin for apispec providing support for '
                   'Marshmallow-OneOfSchema schemas',
@@ -9,7 +9,7 @@ setup(name='apispec-oneofschema',
       author_email='tim@timakro.de',
       url='https://github.com/timakro/apispec-oneofschema',
       install_requires=[
-          'apispec>=1.0.0',
+          'apispec>=3.0.0',
           'marshmallow<4.0.0',
           'marshmallow-oneofschema'
           ],
