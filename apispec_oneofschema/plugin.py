@@ -30,7 +30,10 @@ class OneofOpenAPIConverter(marshmallow.OpenAPIConverter):
             schema_key = common.make_schema_key(schema_instance)
             if schema_key not in self.refs:
                 component_name = self.schema_name_resolver(type_schema) or name
-                self.spec.components.schema(component_name, schema=type_schema)
+                unique_component_name = common.get_unique_schema_name(
+                    self.spec.components, component_name
+                )
+                self.spec.components.schema(unique_component_name, schema=type_schema)
             ref_dict = self.get_ref_dict(schema_instance)
             mapping.update({name: ref_dict['$ref']})
             oneof.append(ref_dict)
