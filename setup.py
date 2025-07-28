@@ -9,7 +9,7 @@ setup(name='apispec-oneofschema',
       url='https://github.com/timakro/apispec-oneofschema',
       install_requires=[
           'apispec>=3.0.0',
-          'marshmallow<4.0.0',
+          'marshmallow<5.0.0',
           'marshmallow-oneofschema'
           ],
       py_modules=['apispec_oneofschema.plugin']
