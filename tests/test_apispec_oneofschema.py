@@ -16,6 +16,13 @@ class PlantSchema(OneOfSchema):
         'flower': FlowerSchema
     }
 
+class ShrubSchema(OneOfSchema):
+    type_schemas = {
+        'rose': FlowerSchema,
+        'tulip': FlowerSchema,
+        'oak': TreeSchema
+    }
+
 class ForestSchema(Schema):
     plant = fields.Nested(PlantSchema)
 
@@ -45,6 +52,23 @@ def test_top_level(spec):
 
     assert 'Tree' in schemas
     assert 'Flower' in schemas
+
+
+def test_type_schema_shared_by_multiple_types(spec):
+    spec.components.schema('Shrub', schema=ShrubSchema)
+
+    schemas = spec.to_dict()['components']['schemas']
+    shrub = schemas['Shrub']
+
+    assert shrub['discriminator']['mapping'] == {
+        'rose': '#/components/schemas/Flower',
+        'tulip': '#/components/schemas/Flower',
+        'oak': '#/components/schemas/Tree'
+    }
+    assert shrub['oneOf'] == [
+        {'$ref': '#/components/schemas/Flower'},
+        {'$ref': '#/components/schemas/Tree'}
+    ]
 
 
 def test_type_schema_already_in_spec(spec):
